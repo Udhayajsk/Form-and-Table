@@ -1,0 +1,185 @@
+
+<html>
+<head>
+	
+	
+</head>
+
+<script>
+    const form = document.getElementById("user-form");
+const table = document.getElementById("user-table");
+const tbody = table.getElementsByTagName("tbody")[0];
+
+form.addEventListener("submit", (e) => {
+	e.preventDefault();
+	const firstname = document.getElementById("firstname").value;
+	const lastname = document.getElementById("lastname").value;
+	const gender = document.getElementsByName("gender");
+	const genderValue = "";
+	for (let I = 0; I < gender.length; i++) {
+		if (gender[i].checked) {
+			genderValue = gender[i].value;
+		}
+	}
+	const address = document.getElementById("address").value;
+	const country = document.getElementById("country").value;
+	const state = document.getElementById("state").value;
+	const city = document.getElementById("city").value;
+	const pincode = document.getElementById("pincode").value;
+	const food = [];
+	for (let I = 0; I < document.getElementsByName("food[]").length; i++) {
+		if (document.getElementsByName("food[]")[i].checked) {
+			food.push(document.getElementsByName("food[]")[i].value);
+		}
+	}
+	const row = document.createElement("tr");
+	const cells = ["First Name", "Last Name", "Gender", "Address", "Country", "State", "City", "Pincode", "Choice of Food"];
+	for (let I = 0; I < cells.length; i++) {
+		const cell = document.createElement("td");
+		cell.textContent = (i === 1) ? `${firstname} ${lastname}` : (i === 2) ? genderValue : (i === 8) ? food.join(", ") : document.getElementById(cells[i]).value;
+		row.appendChild(cell);
+	}
+	tbody.appendChild(row);
+	form.reset();
+});
+</script>
+<title>Form & Table</title>
+
+
+
+<body>
+
+    <style>
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+    }
+    
+    h1 {
+        text-align: center;
+        margin-top: 50px;
+    }
+    
+    form {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+    
+    input[type="text"], input[type="number"], textarea {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        margin-bottom: 20px;
+    }
+    
+    input[type="radio"], input[type="checkbox"] {
+        margin-right: 10px;
+    }
+    
+    input[type="submit"] {
+        background-color: #1fc725;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    table {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    th, td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-collapse: collapse;
+    }
+    
+    th {
+        background-color: #021c02;
+        color: white;
+        font-weight: bold;
+    }
+    
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    </style>
+    
+	<h1>Form & Table</h1>
+	<form id="user-form">
+		<label for="firstname">First Name:</label>
+		<input type="text" id="firstname" name="firstname"><br>
+		<label for="lastname">Last Name:</label>
+		<input type="text" id="lastname" name="lastname"><br>
+		<label for="gender">Gender:</label>
+		<input type="radio" id="male" name="gender" value="male"> Male<br>
+		<input type="radio" id="female" name="gender" value="female"> Female<br>
+		<input type="radio" id="other" name="gender" value="other"> Other<br>
+		<label for="address">Address:</label>
+		<textarea id="address" name="address"></textarea><br>
+		<label for="country">Country:</label>
+		<input type="text" id="country" name="country"><br>
+		<label for="state">State:</label>
+		<input type="text" id="state" name="state"><br>
+		<label for="city">City:</label>
+		<input type="text" id="city" name="city"><br>
+		<label for="pincode">Pincode:</label>
+		<input type="number" id="pincode" name="pincode"><br>
+		<h2>Choice of Food:</h2>
+		<label for="food1">Food 1:</label>
+		<input type="checkbox" id="food1" name="food[]" value="Pizza"><br>
+		<label for="food2">Food 2:</label>
+		<input type="checkbox" id="food2" name="food[]" value="Burger"><br>
+		<label for="food3">Food 3:</label>
+		<input type="checkbox" id="food3" name="food[]" value="Pasta"><br>
+		<label for="food4">Food 4:</label>
+		<input type="checkbox" id="food4" name="food[]" value="Sandwich"><br>
+		<label for="food5">Food 5:</label>
+		<input type="checkbox" id="food5" name="food[]" value="Salad"><br>
+		<input type="submit" value="Submit">
+	</form>
+	<table id="user-table">
+		<tr>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>Gender</th>
+			<th>Address</th>
+			<th>Country</th>
+			<th>State</th>
+			<th>City</th>
+			<th>Pincode</th>
+			<th>Choice of Food</th>
+            </tr>
+            
+                
+
+
+        
+	</table>
+	
+</body>
+</html>
